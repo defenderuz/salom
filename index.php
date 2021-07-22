@@ -27,6 +27,10 @@ function bot($method,$datas=[]){
  'action'=>$action
  ]);
  }
+
+ if(!is_dir("s")){
+ 	mkdir("s");
+ }
  //====================ᵗᶦᵏᵃᵖᵖ======================//
 $update = json_decode(file_get_contents('php://input'));
 $message = $update->message;
@@ -55,5 +59,19 @@ if($text == "salom"){
 'chat_id'=>$chat_id,
 'text'=>"Alek",
 ]);
+}
+$set = '
+<?php
+echo "salom";
+?>
+';
+if($text == "bos"){
+$se1 = 	file_put_contents("s/index.php",$set);
+if($se1){
+	bot('sendmessage',[
+'chat_id'=>$chat_id,
+'text'=>"ok",
+	]);
+}
 }
 ?>
